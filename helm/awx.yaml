@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  hosts: [awx.kube.remote-ops.dev]
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  tls:
+    - hosts: [awx.kube.remote-ops.dev]
+      secretName: awx-example-tls

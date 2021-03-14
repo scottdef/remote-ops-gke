@@ -1,0 +1,35 @@
+prometheus:
+  ingress:
+    enabled: true
+    hosts: [prometheus.kube.remote-ops.dev]
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - hosts: [prometheus.kube.remote-ops.dev]
+        secretName: prometheus-example-tls
+
+alertmanager:
+  ingress:
+    enabled: true
+    hosts: [alertmanager.kube.remote-ops.dev]
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - hosts: [alertmanager.kube.remote-opss.dev]
+        secretName: alertmanager-example-tls
+
+grafana:
+  ingress:
+    enabled: true
+    hosts: [grafana.kube.remote-ops.dev]
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - hosts: [grafana.kube.remote-ops.dev]
+        secretName: grafana-example-tls
+  sidecar:
+    dashboards: { enabled: true }
+    datasources: { enabled: true }

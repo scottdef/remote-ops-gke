@@ -1,0 +1,14 @@
+# https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html#
+
+
+sidecar:
+  datasources: { enabled: true }
+  dashboards: { enabled: true }
+
+dashboards:
+  # Ref: https://grafana.com/dashboards/10000
+  default:
+    - gnetId: 10000
+    - revision: 1
+    - datasource: Prometheus
+    - prometheus-server.kube-system.svc.cluster.local
